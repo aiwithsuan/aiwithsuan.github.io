@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yuki Suan | 27-Year Technical Evolution</title>
+<style>
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: #f8fafc;
+  color: #1e293b;
+  margin: 0;
+  padding: 30px 15px;
+}
+
+.evolution-wrapper {
+  max-width: 1380px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 30px 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e2e8f0;
+}
+
+.evolution-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.evolution-header h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 6px 0;
+}
+
+.evolution-header p {
+  font-size: 14px;
+  color: #64748b;
+  margin: 0;
+}
+
+/* Timeline Flow Container */
+.timeline-flow {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 8px;
+  position: relative;
+}
+
+/* Base Card Styling */
+.era-card {
+  flex: 1;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  min-width: 0;
+}
+
+.era-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.08);
+  border-color: #3b82f6;
+  background: #ffffff;
+}
+
+.era-card.active {
+  background: #f0f7ff;
+  border: 2px solid #2563eb;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.12);
+}
+
+/* Card Header Elements */
+.card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  gap: 4px;
+}
+
+.era-year {
+  font-size: 11px;
+  font-weight: 700;
+  color: #1d4ed8;
+  background: #dbeafe;
+  padding: 3px 6px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.era-badge {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: #475569;
+  background: #e2e8f0;
+  padding: 2px 5px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.card-role {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 8px;
+  line-height: 1.25;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+}
+
+.card-divider {
+  height: 1px;
+  background: #e2e8f0;
+  margin-bottom: 10px;
+}
+
+/* Content Lists */
+.card-section-title {
+  font-size: 9.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #94a3b8;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.tech-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 10px 0;
+  font-size: 11px;
+  color: #334155;
+  line-height: 1.4;
+  flex-grow: 1;
+}
+
+.tech-list li {
+  position: relative;
+  padding-left: 11px;
+  margin-bottom: 3px;
+}
+
+.tech-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #2563eb;
+  font-weight: bold;
+}
+
+.context-note {
+  font-size: 10.5px;
+  color: #64748b;
+  background: rgba(241, 245, 249, 0.8);
+  padding: 6px 8px;
+  border-radius: 6px;
+  border-left: 2.5px solid #3b82f6;
+  line-height: 1.35;
+  margin-top: auto;
+}
+
+/* Connector Arrows */
+.flow-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2563eb;
+  font-size: 15px;
+  user-select: none;
+  padding: 0 1px;
+  animation: pulse-horizontal 2.5s infinite ease-in-out;
+}
+
+@keyframes pulse-horizontal {
+  0%, 100% { transform: translateX(0); opacity: 0.6; }
+  50% { transform: translateX(3px); opacity: 1; }
+}
+
+@keyframes pulse-vertical {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50% { transform: translateY(3px); opacity: 1; }
+}
+
+/* =========================================================
+   Mobile & Tablet Responsive Styles (< 980px)
+   ========================================================= */
+@media screen and (max-width: 980px) {
+  .evolution-wrapper {
+    padding: 20px 14px;
+  }
+
+  .timeline-flow {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .era-card {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px;
+  }
+
+  .card-role {
+    min-height: auto;
+    margin-bottom: 6px;
+  }
+
+  .flow-arrow {
+    padding: 8px 0;
+    font-size: 18px;
+    animation: pulse-vertical 2.5s infinite ease-in-out;
+  }
+
+  .flow-arrow span {
+    transform: rotate(90deg);
+    display: inline-block;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<div class="evolution-wrapper">
+
+  <div class="evolution-header">
+    <h2>27-Year Technical & Career Shift Evolution</h2>
+    <p>Mapping Personal Milestones Against Industry Technology Paradigms (1999 – 2026+)</p>
+  </div>
+
+  <div class="timeline-flow">
+
+    <!-- Era 1 -->
+    <div class="era-card">
+      <div class="card-top">
+        <span class="era-year">1999–2000</span>
+        <span class="era-badge">Web 1.0</span>
+      </div>
+      <div class="card-role">Software Developer</div>
+      <div class="card-divider"></div>
+      
+      <div class="card-section-title">Core Technology</div>
+      <ul class="tech-list">
+        <li>ASP & CGI Scripting</li>
+        <li>Early Dynamic Web Apps</li>
+        <li>Relational DB Schemas</li>
+      </ul>
+
+      <div class="context-note">
+        Built foundational web apps during the early shift from desktop software.
+      </div>
+    </div>
+
+    <!-- Arrow 1 -> 2 -->
+    <div class="flow-arrow"><span>➔</span></div>
+
+    <!-- Era 2 -->
+    <div class="era-card">
+      <div class="card-top">
+        <span class="era-year">2000–2005</span>
+        <span class="era-badge">Enterprise</span>
+      </div>
+      <div class="card-role">Systems Consultant</div>
+      <div class="card-divider"></div>
+      
+      <div class="card-section-title">Core Technology</div>
+      <ul class="tech-list">
+        <li>.NET Web Frameworks</li>
+        <li>J2EE Enterprise Platforms</li>
+        <li>COM / DLL Components</li>
+        <li>Banking ERP Integration</li>
+      </ul>
+
+      <div class="context-note">
+        Architected multi-tier enterprise applications and backend banking integrations.
+      </div>
+    </div>
+
+    <!-- Arrow 2 -> 3 -->
+    <div class="flow-arrow"><span>➔</span></div>
+
+    <!-- Era 3 -->
+    <div class="era-card">
+      <div class="card-top">
+        <span class="era-year">2005–2020</span>
+        <span class="era-badge">Big Data & BI</span>
+      </div>
+      <div class="card-role">Global HP Analytics Lead</div>
+      <div class="card-divider"></div>
+      
+      <div class="card-section-title">Core Technology</div>
+      <ul class="tech-list">
+        <li>Power BI & Dashboards (2017+)</li>
+        <li>Cloud SSAS & Microservices</li>
+        <li>Kafka & Real-Time Streaming</li>
+        <li>MongoDB (Unstructured)</li>
+        <li>R & Python Analytics</li>
+        <li>Oracle, Vertica, Informix</li>
+      </ul>
+
+      <div class="context-note">
+        Scaled global analytics across Asia/US/EU; evaluated cloud SSAS, Kafka streams, and NoSQL.
+      </div>
+    </div>
+
+    <!-- Arrow 3 -> 4 -->
+    <div class="flow-arrow"><span>➔</span></div>
+
+    <!-- Era 4 -->
+    <div class="era-card">
+      <div class="card-top">
+        <span class="era-year">2021–2025</span>
+        <span class="era-badge">Modern EDW</span>
+      </div>
+      <div class="card-role">Healthcare Data Lead</div>
+      <div class="card-divider"></div>
+      
+      <div class="card-section-title">Core Technology</div>
+      <ul class="tech-list">
+        <li>Medallion Architecture</li>
+        <li>Cross-Platform Governance</li>
+        <li>Public Health Datasets</li>
+        <li>Heavy Equipment Telemetry</li>
+      </ul>
+
+      <div class="context-note">
+        Structured multi-source data warehouses across civil infrastructure and health networks.
+      </div>
+    </div>
+
+    <!-- Arrow 4 -> 5 -->
+    <div class="flow-arrow"><span>➔</span></div>
+
+    <!-- Era 5 (Active Focus) -->
+    <div class="era-card active">
+      <div class="card-top">
+        <span class="era-year">2026+</span>
+        <span class="era-badge">AI Readiness</span>
+      </div>
+      <div class="card-role">Analytics Engineer</div>
+      <div class="card-divider"></div>
+      
+      <div class="card-section-title">Core Technology</div>
+      <ul class="tech-list">
+        <li>AI Prompt Engineering at Work</li>
+        <li>dbt Core & GitHub Workflows</li>
+        <li>Streaming Data Architectures</li>
+        <li>Digital Thread & Traceability</li>
+        <li>CapEx Data Modeling</li>
+        <li>Agentic AI Data Prep</li>
+      </ul>
+
+      <div class="context-note">
+        Leveraging workplace AI prompts, real-time streaming, CapEx data models, and Digital Thread traceability.
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>
